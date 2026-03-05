@@ -25,10 +25,10 @@ function Header() {
         </nav>
      </div>
 
-     <div>
+     <Link to="/login" className="hidden lg:inline-block">
         <button className="cart-button bg-green text-white px-4 py-2 rounded">Login
         </button>
-     </div>
+     </Link>
     </header>
 
     <header className={`${isActive ? '-left-0' : '-left-full'} lg:hidden fixed top-0 w-[250px] h-full bg-black text-white p-4 transition-left duration-300 ease-in-out z-50`}>
