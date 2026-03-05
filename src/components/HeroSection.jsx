@@ -2,8 +2,19 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-gray-900 text-white min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+    <section className="relative bg-gray-900 text-white min-h-screen flex items-center overflow-hidden">
+      {/* Background Video */}
+      <video
+        className="absolute left-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+      >
+        <source src="perfume.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center z-10">
         
         {/* Left Content */}
         <div>
@@ -28,15 +39,14 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right Image */}
+        {/* Right Image (or other content) */}
         <div className="flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-            alt="Hero"
+            src=""
+            alt=""
             className="rounded-xl shadow-lg"
           />
         </div>
-
       </div>
     </section>
   );

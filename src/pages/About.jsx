@@ -5,17 +5,28 @@ function About() {
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About Our Company
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto">
-            We build modern, clean, and user-friendly web applications
-            that make people's lives easier.
-          </p>
-        </div>
-      </section>
+   <section className="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
+  {/* Background Video */}
+  <video
+    className="absolute top-0 left-0 w-full h-full object-cover"
+    autoPlay
+    muted
+    loop
+  >
+    <source src="perfume1.mp4" type="video/mp4" />
+ 
+  </video>
+
+  <div className="container mx-auto px-6 text-center relative z-10">
+    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      About Our Company
+    </h1>
+    <p className="text-lg md:text-xl max-w-2xl mx-auto">
+      We build modern, clean, and user-friendly web applications
+      that make people's lives easier.
+    </p>
+  </div>
+</section>
 
       {/* About Content */}
       <section className="container mx-auto px-6 py-16">
