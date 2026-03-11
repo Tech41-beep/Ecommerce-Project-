@@ -10,7 +10,7 @@ const HeroSection = () => {
         muted
         loop
       >
-        <source src="perfume.mp4" type="video/mp4" />
+        <source src="clothes1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
