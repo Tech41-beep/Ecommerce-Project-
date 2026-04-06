@@ -48,12 +48,12 @@ function Header() {
         </div>
 
         <div className='flex flex-col py-4 mt-4'>
-            <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Home</a>
-            <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Shop</a>
-            <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + About</a>
-            <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Contact</a>
+           <Link to="/"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Home</a></Link>
+            <Link to="/products"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Shop</a></Link>
+            <Link to="/about"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + About</a></Link>
+            <Link to="/contact"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Contact</a></Link>
         </div>
-    </header>
+    </header>3
     </>
   )
 }

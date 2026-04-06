@@ -13,7 +13,7 @@ function About() {
     muted
     loop
   >
-    <source src="perfume1.mp4" type="video/mp4" />
+    <source src="clothes1.mp4" type="video/mp4" />
  
   </video>
 
