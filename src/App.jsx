@@ -5,9 +5,9 @@ import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
 import Contact from "./pages/ContactPage";
 import About from "./pages/About";
-import Product from "./pages/Product";
+import Product from "./components/Products/Product";
 import Login from "./pages/Login";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./components/Products/ProductDetail";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../components/Card'
+import Card from '../Card';
 import { useEffect } from 'react'
 import { useState } from 'react';
 function Product() {

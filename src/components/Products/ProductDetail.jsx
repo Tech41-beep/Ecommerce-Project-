@@ -3,7 +3,7 @@ import React from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import Categories from "../components/Products/categories"
+import Categories from "./categories"
 
 function ProductDetail() {
     const {id}= useParams();
