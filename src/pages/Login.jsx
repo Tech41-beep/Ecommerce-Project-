@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../Login.css";
 
 const Login = () => {
@@ -18,38 +19,69 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container max-w-md mx-auto mt-10 p-6 max-h-[500px] mb-[110px] bg-white rounded shadow ">
-       
-      <form onSubmit={handleLogin}>
-        <h1 className="my-[20px] mx-[20px] font-bold text-slate-600 text-xl ">Login to Your Account
-       </h1>
-        <div className="input-group">
-          <label className="label">Email</label>
-          <input className="input2"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)} // Bind email state
-            placeholder="Enter your email"
-            />
+    <div className="containerbg-slate-50 px-4 py-16">
+      <div className="login-container mx-auto max-w-5xl rounded-[2rem] bg-white shadow-xl ring-1 ring-slate-100 lg:grid lg:grid-cols-2">
+        <div className="mini-container hidden rounded-l-[2rem] bg-slate-950 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+          <div className="">
+            <p className="text-sm uppercase tracking-[0.3em] text-amber-300">Welcome back</p>
+            <h1 className="mt-4 text-4xl font-bold leading-tight">Sign in to track your orders and shop faster.</h1>
+            <p className="mt-6 max-w-md text-slate-300">
+              Your account keeps shipping information, order history, and saved preferences in one place.
+            </p>
+          </div>
+
+          <div className="rounded-3xl bg-white/10 p-5 backdrop-blur">
+            <p className="text-sm text-amber-300">Need a new account?</p>
+            <p className="mt-2 text-sm text-slate-300">
+              New customers can begin in the get started flow and move into shopping right away.
+            </p>
+          </div>
         </div>
 
-        <div className="input-group">
-          <label className="label">Password</label>
-          <input className="input2"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} // Bind password state
-            placeholder="Enter your password"
-            />
-        </div>
+        <form onSubmit={handleLogin} className="p-8 md:p-10">
+          <h1 className="text-3xl font-bold text-slate-900">Login to Your Account</h1>
+          <p className="mt-3 text-slate-500">
+            Use your email and password to continue.
+          </p>
 
-        <button className="button" type="submit">Login</button>
-        <h2 className="text-lg text-slate-600 mt-5">
-          Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>
-        </h2>
-        <button className="button1" type="submit">Creat New Account</button>
-      </form>
-      {error && <p className="error-message mt-5">{error}</p>} {/* Display error */}
+          <div className="mt-8 space-y-5">
+            <div className="input-group">
+              <label className="label">Email</label>
+              <input className="input2"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                autoComplete="email"
+                />
+            </div>
+
+            <div className="input-group">
+              <label className="label">Password</label>
+              <input className="input2"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                autoComplete="current-password"
+                />
+            </div>
+
+            <button className="button" type="submit">Login</button>
+
+            <p className="text-sm text-slate-600">
+              Don't have an account? <Link to="/get-started" className="font-semibold text-amber-600 hover:underline">Get started</Link>
+            </p>
+
+          
+          </div>
+            <Link to="/get-started" className="button1 text-center ">
+              Create New Account
+            </Link>
+
+          {error && <p className="error-message mt-5">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 };

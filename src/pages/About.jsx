@@ -1,98 +1,72 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <div className="bg-gray-50 min-h-screen">
-
-      {/* Hero Section */}
-   <section className="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
-  {/* Background Video */}
-  <video
-    className="absolute top-0 left-0 w-full h-full object-cover"
-    autoPlay
-    muted
-    loop
-  >
-    <source src="clothes1.mp4" type="video/mp4" />
- 
-  </video>
-
-  <div className="container mx-auto px-6 text-center relative z-10">
-    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-      About Our Company
-    </h1>
-    <p className="text-lg md:text-xl max-w-2xl mx-auto">
-      We build modern, clean, and user-friendly web applications
-      that make people's lives easier.
-    </p>
-  </div>
-</section>
-
-      {/* About Content */}
-      <section className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          
-          {/* Text */}
+    <div className="bg-slate-50 min-h-screen">
+      <section className="bg-slate-950 text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 lg:grid-cols-2 lg:items-center lg:px-8">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Who We Are
-            </h2>
-            <p className="text-gray-600 mb-4">
-              We are passionate developers focused on creating beautiful,
-              responsive, and high-performance websites using React.
+            <p className="text-sm uppercase tracking-[0.3em] text-amber-300">About us</p>
+            <h1 className="mt-4 text-4xl font-bold md:text-5xl">
+              We build a shopping experience that feels fast, clear, and modern.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+              Our store is designed to help customers browse products quickly, compare details easily, and move from discovery to checkout without friction.
             </p>
-            <p className="text-gray-600">
-              Our goal is to deliver clean code, modern design, and the
-              best user experience possible.
-            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/products" className="rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-300">
+                Browse products
+              </Link>
+              <Link to="/contact" className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
+                Contact us
+              </Link>
+            </div>
           </div>
 
-          {/* Image */}
-          <div>
-            <img
-              src="https://i5.walmartimages.com/asr/fd98eee0-e153-48ed-b022-87c4a753ec3f.911a1c36b9d31ea249fe3d5d6e139059.jpeg"
-              alt="Team working"
-              className="rounded-2xl shadow-lg"
-            />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-3xl bg-white/10 p-5 backdrop-blur">
+              <p className="text-3xl font-bold text-amber-300">12+</p>
+              <p className="mt-2 text-slate-300">Product categories presented in a clean, easy-to-scan layout.</p>
+            </div>
+            <div className="rounded-3xl bg-amber-300 p-5 text-slate-950">
+              <p className="text-3xl font-bold">24h</p>
+              <p className="mt-2">Support response target for customers who need help choosing an item.</p>
+            </div>
+            <div className="sm:col-span-2 overflow-hidden rounded-3xl bg-white p-3 shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=80"
+                alt="Store team"
+                className="h-72 w-full rounded-[1.25rem] object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-10 text-gray-800">
-            
-                <button className="">modern</button>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            
-            <div className="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition">
-              <h3 className="text-xl font-semibold mb-3">Modern Design</h3>
-              <p className="text-gray-600">
-                Clean, minimal, and responsive UI design for all devices.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition">
-              <h3 className="text-xl font-semibold mb-3">Fast Performance</h3>
-              <p className="text-gray-600">
-                Optimized and high-speed applications built with React.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition">
-              <h3 className="text-xl font-semibold mb-3">Clean Code</h3>
-              <p className="text-gray-600">
-                Structured and maintainable code following best practices.
-              </p>
-            </div>
-
+      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h2 className="text-xl font-semibold text-slate-900">Better product discovery</h2>
+            <p className="mt-3 text-slate-600">
+              Categories, featured items, and product detail pages are arranged to reduce friction when browsing.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h2 className="text-xl font-semibold text-slate-900">Clear customer journeys</h2>
+            <p className="mt-3 text-slate-600">
+              Every page gives users a next step, whether they want to shop, contact, or sign in.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h2 className="text-xl font-semibold text-slate-900">Consistent visual system</h2>
+            <p className="mt-3 text-slate-600">
+              Shared layout, spacing, and color choices keep the whole front end feeling connected.
+            </p>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

@@ -7,10 +7,13 @@ import Contact from "./pages/ContactPage";
 import About from "./pages/About";
 import Product from "./components/Products/Product";
 import Login from "./pages/Login";
+import GetStarted from "./pages/Getstart";
+
 import ProductDetail from "./components/Products/ProductDetail";
 
 function App() {
   return (
+
     <HashRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
@@ -18,6 +21,7 @@ function App() {
           <Route path="products" element={<Product />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="get-started" element={<GetStarted />} />
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="login" element={<Login />} />
         </Route>

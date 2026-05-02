@@ -1,61 +1,55 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const GetStarted = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
-
   return (
-    <section className="relative bg-gradient-to-r from-blue-500 to-indigo-600 text-white min-h-screen flex flex-col justify-center items-center py-16">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        loop
-      >
-        <source src="/path/to/your-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section className="relative overflow-hidden bg-slate-950 px-4 py-20 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(251,191,36,0.22),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.22),_transparent_35%)]" />
 
-      {/* Foreground Content with AOS Animations */}
-      <div className="container mx-auto px-6 text-center space-y-8 z-10 relative">
-        <h1
-          data-aos="fade-up"
-          className="text-5xl font-bold tracking-wide leading-tight mb-6"
-        >
-          Get Started with Our App
-        </h1>
-        <p
-          data-aos="fade-up"
-          data-aos-delay="200"
-          className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
-        >
-          Welcome! We're thrilled to help you start your journey. Follow these simple steps to get up and running with our application in no time.
-        </p>
-        <div
-          data-aos="fade-up"
-          data-aos-delay="400"
-          className="bg-white text-gray-900 rounded-lg shadow-lg p-8 space-y-6 max-w-2xl mx-auto"
-        >
-          <ol className="list-decimal text-left space-y-4 text-lg">
-            <li>Step 1: Create an account or log in to your profile.</li>
-            <li>Step 2: Explore the various features we offer.</li>
-            <li>Step 3: Start creating amazing things with our app!</li>
-          </ol>
-          <div className="mt-8 flex justify-center">
-            <a
-              href="/signup"
-              className="bg-blue-600 text-white text-lg px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300"
-            >
-              Sign Up Now
-            </a>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-amber-300">Get started</p>
+          <h1 className="mt-4 text-4xl font-bold md:text-5xl">
+            Start shopping in three simple steps.
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-slate-300">
+            This page gives new shoppers a clear path into the store so they can browse, compare, and buy without confusion.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="rounded-3xl bg-white/10 p-6 backdrop-blur">
+            <p className="text-sm text-amber-300">Step 1</p>
+            <h2 className="mt-3 text-2xl font-semibold">Create an account</h2>
+            <p className="mt-3 text-slate-300">
+              Save your details so checkout becomes faster on the next order.
+            </p>
           </div>
+
+          <div className="rounded-3xl bg-amber-300 p-6 text-slate-950">
+            <p className="text-sm font-medium">Step 2</p>
+            <h2 className="mt-3 text-2xl font-semibold">Choose products</h2>
+            <p className="mt-3">
+              Browse featured products, open a detail page, and compare price and description.
+            </p>
+          </div>
+
+          <div className="rounded-3xl bg-white/10 p-6 backdrop-blur">
+            <p className="text-sm text-amber-300">Step 3</p>
+            <h2 className="mt-3 text-2xl font-semibold">Complete checkout</h2>
+            <p className="mt-3 text-slate-300">
+              Add items to cart, confirm order details, and finish in just a few clicks.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          <Link to="/products" className="rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-300">
+            Browse products
+          </Link>
+          <Link to="/login" className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
+            Login now
+          </Link>
         </div>
       </div>
     </section>

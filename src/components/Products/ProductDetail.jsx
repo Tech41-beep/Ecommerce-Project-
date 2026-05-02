@@ -1,74 +1,79 @@
-import { useState } from "react"
-import React from "react"
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useParams } from "react-router-dom"
-import Categories from "./categories"
+import { useMemo } from "react";
+import { useParams } from "react-router-dom";
+import localProducts from "../../data/localProducts";
 
 function ProductDetail() {
-    const {id}= useParams();
-    const [product, setProduct] = useState([]);
-    useEffect(()=>{
-       const fetchProduct = async()=>{
-     try {
-       const response= await fetch(`https://fakestoreapi.com/products/${id}`);
-        const data = await response.json();
-        setProduct(data);
-         }
-         catch(error){
-             console.error("Error fetching product:", error);
-         }
-       }
-       fetchProduct();
-    }, [id]);
-    if(!product) {
-        return(
-            <div>
-                <h1 className="text-4xl font-bold mb-6 text-gray-800">Loading...</h1>
-            </div>
-        )
-    }
-  return (
-    // container
-    <div className="bg-gray-50 min-h-[500px] py-24 px-4 sm:px-6 lg:px-8 "> 
-     <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-lg p-6 grid grid-cols-2 gap-8">
-            {/* img */}
-            <div className="min-h-50">
-            <img src={product.image} alt={product.title} className="w-full min-h-5 mt-4  p-[16px] h-64 object-contain mb-4 hover:transition hover:scale-105
-            hover:cursor:pointer" />
-            </div>
-            {/* content left side*/}
-           <div className="">
-             <h1 className="text-4xl font-bold mb-6 text-gray-800">{product.title}</h1>
-            
-             <p className="text-gray-600 mb-4 ">{product.description}</p>
-            <div>
-                <div className="flex items-center gap-4">
-                    <span className="text-2xl font-bold text-red-500"> ${ (product.price * 0.5).toFixed(2) }</span>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white  rounded-md font-semibold line-through">50% off</button>
-                </div>
+  const { id } = useParams();
+  const product = useMemo(
+    () => localProducts.find((item) => item.id === Number(id)),
+    [id]
+  );
 
-                 <div className="grid grid-cols-3  sm:grid-cols-1 gap-[30px] mt-6 lg:flex ">
-                <input type="number" min="1" defaultValue="1" className="w-25 border border-gray-300 rounded-md px-2 lg:w-[200px]" />
-                <button className="bg-yellow-500 hover:bg-primary text-white px-4 py-2 rounded-md font-semibold lg:w-[200px]">Make a gift</button>
-                
-             </div>
-                         
+  if (!product) {
+    return (
+      <div className="min-h-[400px] flex items-center justify-center">
+        <p className="text-gray-500 text-lg">Product not found</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen py-20 px-4">
+      <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-6 md:p-10 grid md:grid-cols-2 gap-10">
+        <div className="flex items-center justify-center rounded-2xl bg-slate-50 p-6">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-72 object-contain transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+
+          <div className="flex flex-col justify-between">
+            <div>
+              <span className="mb-4 inline-block rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700">
+                {product.category}
+              </span>
+
+              <h1 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+                {product.title}
+              </h1>
+
+              <p className="mb-6 leading-relaxed text-gray-600">
+                {product.description}
+              </p>
             </div>
-            
-       
-  
-     
-           </div>
-          <div className="flex">
-             <Categories></Categories>
+
+            <div>
+              <div className="mb-6 flex items-center gap-4">
+                <span className="text-3xl font-bold text-indigo-600">
+                  ${product.price}
+                </span>
+                <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+                  In Stock
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue="1"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 sm:w-24"
+                />
+
+                <button className="flex-1 rounded-lg bg-slate-950 py-2.5 font-semibold text-white shadow-md transition duration-300 hover:bg-amber-400 hover:text-slate-950 hover:shadow-lg">
+                  Add to Cart
+                </button>
+              </div>
+
+              <button className="mt-4 w-full rounded-lg border border-gray-300 py-2.5 font-medium transition hover:bg-gray-100">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
-        
-    </section>
-     </div>
-  )
+    </div>
+  );
 }
 
-export default ProductDetail
+export default ProductDetail;

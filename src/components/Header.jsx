@@ -1,59 +1,62 @@
-import React from 'react'
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 
 function Header() {
     const [isActive, setIsActive] = useState(false);
   return (
   <>
-    <header className="mt-[56.8px] flex fixed  left-0 w-full z-50 bg-white shadow border-b border-gray-200 justify-between px-4 py-4 items-center p-4 border text-black">
-        <div className='flex items-center gap-[5px]'>
-            <button className="inline-block lg:hidden menu-button text-2xl"
-            onClick={()=>{setIsActive(true)}}>☰</button>
-            <h1 className="logo">E-Commerce Store</h1>
+        <header className="fixed left-0 top-[44px] z-50 flex w-full items-center justify-between border-b border-slate-200 bg-white px-4 py-4 text-black shadow-sm">
+                <div className='flex items-center gap-3'>
+                        <button
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-2xl lg:hidden"
+                            onClick={() => { setIsActive(true); }}
+                            aria-label="Open navigation menu"
+                        >
+                            ☰
+                        </button>
+                        <Link to="/" className="text-lg font-bold tracking-wide text-slate-900">
+                            E-Commerce Store
+                        </Link>
         </div>
      <div>
         <nav>
-            <ul className="nav-links  hidden lg:flex space-x-4 gap-[4px] z-10">
-                <li><NavLink to="/" className='hover:underline hover:text-primary aria-[current-page]:underline aria-[current-page]:text-yellow-600 '>Home</NavLink></li>
-                <li><NavLink to="/products" className='hover:underline hover:text-primary'>Product</NavLink></li>
-                <li><NavLink to="/about" className='hover:underline hover:text-primary'>About</NavLink></li>
-                <li><NavLink to="/contact" className='hover:underline hover:text-primary'>Contact</NavLink></li>
+                        <ul className="hidden items-center gap-6 lg:flex">
+                                <li><NavLink to="/" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Home</NavLink></li>
+                                <li><NavLink to="/products" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Products</NavLink></li>
+                                <li><NavLink to="/about" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>About</NavLink></li>
+                                <li><NavLink to="/contact" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Contact</NavLink></li>
+                                <li><NavLink to="/get-started" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Get Started</NavLink></li>
             </ul>
         </nav>
      </div>
 
      <Link to="/login" className="hidden lg:inline-block">
-        <button className="cart-button bg-green text-white px-4 py-2 rounded">Login
-        </button>
+                <span className="inline-flex items-center rounded-full bg-emerald-600 px-5 py-2 font-medium text-white transition hover:bg-emerald-700">
+                    Login
+                </span>
      </Link>
     </header>
 
-    <header className={`${isActive ? '-left-0' : '-left-full'} lg:hidden fixed top-0 w-[250px] h-full bg-black text-white p-4 transition-left duration-300 ease-in-out z-50`}>
-        <div className="close-button flex justify-between text-2xl">
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-</svg>
+        <div className={`${isActive ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'} fixed inset-0 z-50 bg-black/40 transition-opacity lg:hidden`} onClick={() => setIsActive(false)} />
 
-            </button>
-            <button onClick={()=>{setIsActive(false)}} className='bg-black border-dashed transition-all duration-300ease-out  rounded-full border-2 border-blue-300'>
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-</svg>
-
-            </button>
+        <header className={`${isActive ? 'translate-x-0' : '-translate-x-full'} fixed top-0 left-0 z-[60] h-full w-[280px] bg-slate-950 p-5 text-white transition-transform duration-300 ease-in-out lg:hidden`}>
+                <div className="mb-8 flex items-center justify-between">
+                        <span className="text-lg font-semibold tracking-wide">Menu</span>
+                        <button onClick={()=>{setIsActive(false)}} className='inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-white'>
+                             ✕
+                        </button>
         </div>
 
-        <div className='flex flex-col py-4 mt-4'>
-           <Link to="/"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Home</a></Link>
-            <Link to="/products"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Shop</a></Link>
-            <Link to="/about"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + About</a></Link>
-            <Link to="/contact"> <a className='hover:bg-gray-700 p-2 hover:cursor-pointer'> + Contact</a></Link>
+                <div className='flex flex-col gap-2 py-4'>
+                     <Link to="/" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Home</Link>
+                     <Link to="/products" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Products</Link>
+                     <Link to="/about" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>About</Link>
+                     <Link to="/contact" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Contact</Link>
+                     <Link to="/get-started" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Get Started</Link>
+                     <Link to="/login" className='rounded-lg px-3 py-3 text-amber-300 hover:bg-slate-800' onClick={() => setIsActive(false)}>Login</Link>
         </div>
-    </header>3
+        </header>
     </>
   )
 }

@@ -8,10 +8,10 @@ function RootLayout() {
     <>
       <TopBar />
       <Header />
-      <main className="pt-[140px]">
+      <main className="pt-[120px]">
         <Outlet />
       </main>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }

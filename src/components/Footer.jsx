@@ -1,19 +1,40 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <div className="bg-slate-800 text-white py-8 mt-8 grid grid-cols-2">
-      <div className="container mx-auto px-4">
-        <p className="text-center"><b>© 2026 E-commerce Store. All rights reserved.</b></p>
+    <footer className="mt-12 bg-slate-950 text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3">
+        <div>
+          <h3 className="text-xl font-semibold">E-Commerce Store</h3>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-slate-300">
+            Modern products, fast browsing, and a clean shopping experience built for your next purchase.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-amber-300">Quick Links</h4>
+          <ul className="mt-4 space-y-3 text-sm text-slate-300">
+            <li><Link to="/products" className="hover:text-white">Products</Link></li>
+            <li><Link to="/about" className="hover:text-white">About</Link></li>
+            <li><Link to="/get-started" className="hover:text-white">Get Started</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-semibold text-amber-300">Contact</h4>
+          <ul className="mt-4 space-y-3 text-sm text-slate-300">
+            <li>Phnom Penh, Cambodia</li>
+            <li>lovkimtech@gmail.com</li>
+            <li>+855 96 678 1505</li>
+          </ul>
+        </div>
       </div>
-       <div>
-        <ul className="flex col-span-3 lg:flex justify-center space-x-4 gap-4">
-            <li><a href="#" className="hover:text-gray-400">Lov Kimtech</a></li>
-            <li><a href="#" className="hover:text-gray-400">Instagram: Jaster</a></li>
-            <li><a href="#" className="hover:text-gray-400">Contact Us</a></li>
-        </ul>
-       </div>
-    </div>
+
+      <div className="border-t border-slate-800 px-4 py-4 text-center text-sm text-slate-400">
+        © 2026 E-commerce Store. All rights reserved.
+      </div>
+    </footer>
   )
 }
 export default Footer
