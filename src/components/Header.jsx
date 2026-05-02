@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../context/useCart';
 
 
 function Header() {
     const [isActive, setIsActive] = useState(false);
+    const { totalItems } = useCart();
   return (
   <>
         <header className="fixed left-0 top-[44px] z-50 flex w-full items-center justify-between border-b border-slate-200 bg-white px-4 py-4 text-black shadow-sm">
@@ -27,6 +29,7 @@ function Header() {
                                 <li><NavLink to="/about" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>About</NavLink></li>
                                 <li><NavLink to="/contact" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Contact</NavLink></li>
                                 <li><NavLink to="/get-started" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Get Started</NavLink></li>
+                                <li><NavLink to="/cart" className={({ isActive }) => isActive ? 'text-amber-600 font-semibold' : 'text-slate-600 hover:text-slate-900'}>Cart {totalItems > 0 ? `(${totalItems})` : ''}</NavLink></li>
             </ul>
         </nav>
      </div>
@@ -54,6 +57,7 @@ function Header() {
                      <Link to="/about" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>About</Link>
                      <Link to="/contact" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Contact</Link>
                      <Link to="/get-started" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Get Started</Link>
+                     <Link to="/cart" className='rounded-lg px-3 py-3 text-slate-200 hover:bg-slate-800' onClick={() => setIsActive(false)}>Cart {totalItems > 0 ? `(${totalItems})` : ''}</Link>
                      <Link to="/login" className='rounded-lg px-3 py-3 text-amber-300 hover:bg-slate-800' onClick={() => setIsActive(false)}>Login</Link>
         </div>
         </header>

@@ -1,14 +1,13 @@
-import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useCart } from "../../context/useCart";
-import { Link } from "react-router-dom";
-import localProducts from "../../data/localProducts";
+import { useMemo } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useCart } from "../context/useCart";
+import localProducts from "../data/localProducts";
 
-function ProductDetail() {
+function ViewProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addItem } = useCart();
-  const [quantity, setQuantity] = useState(1);
+
   const product = useMemo(
     () => localProducts.find((item) => item.id === Number(id)),
     [id]
@@ -16,24 +15,33 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-[400px] flex items-center justify-center">
-        <p className="text-gray-500 text-lg">Product not found</p>
-      </div>
+      <section className="min-h-[70vh] px-4 py-20 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-slate-900">Product not found</h1>
+          <p className="mt-3 text-slate-600">The item you selected is not available.</p>
+          <Link
+            to="/products"
+            className="mt-6 inline-flex rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition hover:bg-amber-400 hover:text-slate-950"
+          >
+            Back to products
+          </Link>
+        </div>
+      </section>
     );
   }
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen py-20 px-4">
+    <section className="bg-slate-50 px-4 py-16">
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-slate-500">
           <Link to="/" className="hover:text-slate-900">Home</Link>
           <span>/</span>
           <Link to="/products" className="hover:text-slate-900">Products</Link>
           <span>/</span>
-          <span className="text-slate-900">Product details</span>
+          <span className="text-slate-900">View product</span>
         </div>
 
-        <div className="grid gap-10 rounded-3xl bg-white p-6 shadow-xl md:grid-cols-2 md:p-10">
+        <div className="grid gap-10 rounded-[2rem] bg-white p-6 shadow-xl md:grid-cols-2 md:p-10">
           <div className="flex items-center justify-center rounded-2xl bg-slate-50 p-6">
             <img
               src={product.image}
@@ -44,7 +52,7 @@ function ProductDetail() {
 
           <div className="flex flex-col justify-between">
             <div>
-              <span className="mb-4 inline-block rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700">
+              <span className="mb-4 inline-block rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700 capitalize">
                 {product.category}
               </span>
 
@@ -68,42 +76,34 @@ function ProductDetail() {
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row">
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(event) => setQuantity(Math.max(1, Number(event.target.value) || 1))}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 sm:w-24"
-                />
-
                 <button
                   type="button"
                   onClick={() => {
-                    addItem(product, quantity);
-                    navigate('/cart');
+                    addItem(product, 1);
+                    navigate("/cart");
                   }}
                   className="flex-1 rounded-lg bg-slate-950 py-2.5 font-semibold text-white shadow-md transition duration-300 hover:bg-amber-400 hover:text-slate-950 hover:shadow-lg"
                 >
                   Add to Cart
                 </button>
-              </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  addItem(product, quantity);
-                  navigate('/cart');
-                }}
-                className="mt-4 w-full rounded-lg border border-gray-300 py-2.5 font-medium transition hover:bg-gray-100"
-              >
-                Buy Now
-              </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    addItem(product, 1);
+                    navigate("/cart");
+                  }}
+                  className="flex-1 rounded-lg border border-gray-300 py-2.5 font-medium transition hover:bg-gray-100"
+                >
+                  Buy Now
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default ProductDetail;
+export default ViewProduct;

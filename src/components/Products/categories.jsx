@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import localProducts from "../../data/localProducts";
 
 function Categories() {
@@ -35,9 +36,12 @@ function Categories() {
                 <p className="text-indigo-600 font-bold text-xl mt-3">
                   ${item.price}
                 </p>
-                <button className="mt-5 w-full rounded-xl bg-indigo-600 text-white py-2.5 font-medium hover:bg-indigo-700 transition">
+                <Link
+                  to={`/view-product/${item.id}`}
+                  className="mt-5 inline-flex w-full justify-center rounded-xl bg-indigo-600 py-2.5 font-medium text-white transition hover:bg-indigo-700"
+                >
                   View Product
-                </button>
+                </Link>
               </div>
             </div>
           ))}
